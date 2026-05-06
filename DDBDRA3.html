@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño y Desarrollo de Base de Datos</title>
+    <link rel="icon" href="img/bdanimado.gif" type="image/svg+xml">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle at bottom, #020111 0%, #000000 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Estrellas */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            animation: moveStars 60s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveStars {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 1000px 1000px;
+            }
+        }
+
+        header {
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #00d4ff;
+        }
+
+        section {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        code {
+            display: block;
+            background: #000;
+            padding: 10px;
+            border-radius: 10px;
+            color: #00ffcc;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: #00ffcc;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>DISEÑO DE BASES DE DATOS - RA3</h1>
+        <p>Aprende a manejar datos como un astronauta digital 🚀</p>
+    </header>
+
+    <section>
+
+        <div class="card">
+            <h2>✏️ Modificar datos (UPDATE)</h2>
+
+            <p>Estructura básica:</p>
+            <code>UPDATE tabla
+SET campo = 'valor'
+WHERE condicion;</code>
+
+            <p>Ejemplo simple:</p>
+            <code>UPDATE tabla
+SET campo = 'nuevo_valor'
+WHERE id = 1;</code>
+
+            <p>Varios campos:</p>
+            <code>UPDATE tabla
+SET campo1 = 'valor1', campo2 = 'valor2'
+WHERE id = 2;</code>
+
+            <p>Condición:</p>
+            <code>UPDATE tabla
+SET campo = 'Aprobado'
+WHERE campo_numerico >= 70;</code>
+
+            <p>⚠️ Sin WHERE (cambia todo):</p>
+            <code>UPDATE tabla
+SET campo = 'valor_general';</code>
+
+            <p>Incrementar valor:</p>
+            <code>UPDATE tabla
+SET campo_numerico = campo_numerico + 1
+WHERE id = 3;</code>
+
+        </div>
+
+        <div class="card">
+            <h2>🧠 Recuerda</h2>
+            <p>UPDATE = Qué cambiar</p>
+            <p>SET = Nuevo valor</p>
+            <p>WHERE = A quién cambiar</p>
+        </div>
+        <div class="card">
+            <h2>🛠️ Modificar tablas (ALTER TABLE)</h2>
+
+            <p>Estructura básica:</p>
+            <code>ALTER TABLE tabla
+ACCION;</code>
+
+            <p>Agregar una columna:</p>
+            <code>ALTER TABLE empleados
+ADD telefono VARCHAR(15);</code>
+
+            <p>Modificar tipo de dato:</p>
+            <code>ALTER TABLE empleados
+ALTER COLUMN sueldo DECIMAL(10,2);</code>
+
+            <p>Renombrar columna (MySQL):</p>
+            <code>ALTER TABLE empleados
+CHANGE nombre nombre_completo VARCHAR(100);</code>
+
+            <p>Eliminar columna:</p>
+            <code>ALTER TABLE empleados
+DROP COLUMN telefono;</code>
+
+            <p>Agregar restricción (PRIMARY KEY):</p>
+            <code>ALTER TABLE empleados
+ADD PRIMARY KEY (id);</code>
+
+            <p>⚠️ Cuidado: estos cambios afectan la estructura de la tabla.</p>
+        </div>
+
+        <div class="card">
+            <h2>🗄️ Modificar bases de datos</h2>
+
+            <p>Crear base de datos:</p>
+            <code>CREATE DATABASE empresa;</code>
+
+            <p>Usar base de datos:</p>
+            <code>USE empresa;</code>
+
+            <p>Renombrar base de datos (según gestor):</p>
+            <code>ALTER DATABASE empresa
+MODIFY NAME = nueva_empresa;</code>
+
+            <p>Cambiar configuración (ejemplo collation):</p>
+            <code>ALTER DATABASE empresa
+COLLATE utf8mb4_general_ci;</code>
+
+            <p>Eliminar base de datos:</p>
+            <code>DROP DATABASE empresa;</code>
+
+            <p>⚠️ IMPORTANTE: eliminar una base de datos borra toda la información.</p>
+        </div>
+    </section>
+    <section>
+        <div class="card">
+            <h2>✏️ Caso: Corrección de Datos en la Nómina</h2>
+
+            <p>
+                Durante la auditoría de la empresa <strong>TechSolutions S.R.L.</strong>,
+                se detectó que uno de los empleados tiene su nombre mal escrito en la base de datos.
+                Es necesario corregirlo para mantener la información actualizada.
+            </p>
+
+            <h3>📊 Registro con error</h3>
+
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Cargo</th>
+                    <th>Sueldo</th>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Laura Mendez</td>
+                    <td>Supervisor</td>
+                    <td>47,000</td>
+                </tr>
+            </table>
+
+            <p>
+                ⚠️ El nombre correcto debe ser: <strong>Laura Méndez</strong>
+            </p>
+
+            <h3>💻 Consulta SQL</h3>
+
+            <pre>
+UPDATE empleados
+SET nombre = 'Laura Méndez'
+WHERE id = 8;
+    </pre>
+
+            <h3>🧠 Explicación</h3>
+            <p><strong>UPDATE empleados</strong> → Indica la tabla que se va a modificar.</p>
+            <p><strong>SET nombre = 'Laura Méndez'</strong> → Nuevo valor correcto.</p>
+            <p><strong>WHERE id = 8</strong> → Se asegura de cambiar solo ese empleado.</p>
+
+            <p>
+                🚨 Sin la condición <strong>WHERE</strong>, se cambiarían todos los nombres de la tabla.
+            </p>
+        </div>
+    </section>
+</body>
+
+</html>

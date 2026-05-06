@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Diseño y Desarrollo de Base de Datos</title>
+    <link rel="icon" href="img/bdanimado.gif" type="image/svg+xml">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle at bottom, #020111 0%, #000000 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            animation: moveStars 60s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveStars {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 1000px 1000px;
+            }
+        }
+
+        header {
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #00d4ff;
+        }
+
+        section {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        code {
+            display: block;
+            background: #000;
+            padding: 10px;
+            border-radius: 10px;
+            color: #00ffcc;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: #00ffcc;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>DISEÑO DE BASES DE DATOS - RA4</h1>
+        <p>Backup y Alta Disponibilidad 🚀</p>
+    </header>
+
+    <section>
+
+        <!-- BACKUP -->
+        <div class="card">
+            <h2>¿Qué es un BACKUP?</h2>
+            <p>
+                Un backup es una copia de seguridad de una base de datos que permite recuperar la información en caso
+                de pérdida, error o fallo del sistema.
+            </p>
+
+            <h2>Importancia</h2>
+            <p>
+                Los backups son esenciales para proteger la información, evitar pérdidas de datos y garantizar la
+                continuidad del sistema.
+            </p>
+
+            <h2>Pasos para realizar un backup en phpMyAdmin</h2>
+            <p><strong>Exportar:</strong></p>
+            <ul>
+                <li>Seleccionar la base de datos</li>
+                <li>Ir a la opción "Exportar"</li>
+                <li>Elegir formato SQL</li>
+                <li>Descargar archivo</li>
+            </ul>
+
+            <p><strong>Importar:</strong></p>
+            <ul>
+                <li>Crear o seleccionar base de datos</li>
+                <li>Ir a la opción "Importar"</li>
+                <li>Seleccionar archivo .sql</li>
+                <li>Ejecutar</li>
+            </ul>
+        </div>
+
+        <!-- ELIMINAR -->
+        <div class="card">
+            <h2>Eliminar en SQL</h2>
+
+            <p><strong>Eliminar campo:</strong></p>
+            <code>
+ALTER TABLE empleados
+DROP COLUMN telefono;
+            </code>
+
+            <p><strong>Eliminar tabla:</strong></p>
+            <code>
+DROP TABLE empleados;
+            </code>
+
+            <p><strong>Eliminar base de datos:</strong></p>
+            <code>
+DROP DATABASE empresa;
+            </code>
+        </div>
+
+        <!-- CONSULTAS -->
+        <div class="card">
+            <h2>Consultas Multitablas</h2>
+
+            <p><strong>JOIN:</strong></p>
+            <code>
+SELECT clientes.nombre, pedidos.total
+FROM clientes
+INNER JOIN pedidos
+ON clientes.id = pedidos.cliente_id;
+            </code>
+
+            <p><strong>UNION:</strong></p>
+            <code>
+SELECT nombre FROM empleados_activos
+UNION
+SELECT nombre FROM empleados_inactivos;
+            </code>
+        </div>
+        <section>
+
+            <div class="card">
+                <h2>🗑️ Caso: Limpieza y Análisis de Datos</h2>
+
+                <p>
+                    La empresa <strong>TechSolutions S.R.L.</strong> está realizando una depuración de su sistema.
+                    Se detectaron datos innecesarios, tablas obsoletas y la necesidad de combinar información
+                    entre diferentes tablas para análisis.
+                </p>
+
+                <h3>📊 Tabla de empleados (antes)</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Cargo</th>
+                        <th>Teléfono</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Ana Pérez</td>
+                        <td>Auxiliar</td>
+                        <td>809-555-1111</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Luis Gómez</td>
+                        <td>Supervisor</td>
+                        <td>809-555-2222</td>
+                    </tr>
+                </table>
+
+                <p>⚠️ Se decide eliminar el campo <strong>telefono</strong> porque ya no es necesario.</p>
+
+                <h3>💻 Eliminar campo</h3>
+                <pre>
+ALTER TABLE empleados 
+DROP COLUMN telefono;
+        </pre>
+
+                <p>🧹 También se elimina una tabla antigua que ya no se utiliza:</p>
+
+                <h3>💻 Eliminar tabla</h3>
+                <pre>
+DROP TABLE empleados;
+        </pre>
+
+                <p>🚨 Finalmente, se elimina una base de datos completa de pruebas:</p>
+
+                <h3>💻 Eliminar base de datos</h3>
+                <pre>
+DROP DATABASE empresa;
+        </pre>
+            </div>
+
+            <div class="card">
+                <h2>🔗 Caso: Consultas Multitablas</h2>
+
+                <p>
+                    La empresa necesita analizar información combinada entre clientes y pedidos,
+                    así como unificar listas de empleados activos e inactivos.
+                </p>
+
+                <h3>📊 Tablas relacionadas</h3>
+
+                <table>
+                    <tr>
+                        <th>Clientes</th>
+                        <th>ID</th>
+                    </tr>
+                    <tr>
+                        <td>Juan</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>María</td>
+                        <td>2</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <th>Pedidos</th>
+                        <th>Total</th>
+                        <th>cliente_id</th>
+                    </tr>
+                    <tr>
+                        <td>1500</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>2300</td>
+                        <td>2</td>
+                        <td>2</td>
+                    </tr>
+                </table>
+
+                <h3>💻 Consulta con JOIN</h3>
+                <pre>
+SELECT clientes.nombre, pedidos.total 
+FROM clientes 
+INNER JOIN pedidos 
+ON clientes.id = pedidos.cliente_id;
+        </pre>
+
+                <p>
+                    🔍 Esta consulta une ambas tablas usando el ID del cliente y muestra
+                    qué cliente hizo cada pedido.
+                </p>
+
+                <h3>💻 Consulta con UNION</h3>
+                <pre>
+SELECT nombre FROM empleados_activos 
+UNION 
+SELECT nombre FROM empleados_inactivos;
+        </pre>
+
+                <p>
+                    🔄 Esta consulta une los resultados de dos tablas diferentes en una sola lista,
+                    eliminando duplicados.
+                </p>
+            </div>
+
+        </section>
+        <!-- ALTA DISPONIBILIDAD -->
+        <div class="card">
+            <h2>Alta Disponibilidad</h2>
+
+            <p>
+                La alta disponibilidad es la capacidad de un sistema de mantenerse funcionando el mayor tiempo posible,
+                evitando interrupciones.
+            </p>
+
+            <h2>Estrategias</h2>
+
+            <p><strong>Replicación:</strong> copia de datos en otro servidor en tiempo real.</p>
+            <p><strong>Clustering:</strong> varios servidores trabajando como uno solo.</p>
+            <p><strong>Mirroring:</strong> copia exacta de un servidor (más común en SQL Server).</p>
+
+            <h2>Diferencias</h2>
+            <p>
+                La replicación sincroniza datos, el clustering distribuye carga y el mirroring mantiene una copia exacta
+                para recuperación inmediata.
+            </p>
+        </div>
+
+    </section>
+
+</body>
+
+</html>

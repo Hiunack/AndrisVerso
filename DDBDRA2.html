@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño y Desarrollo de Base de Datos</title>
+    <link rel="icon" href="img/bdanimado.gif" type="image/svg+xml">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle at bottom, #020111 0%, #000000 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Estrellas */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            animation: moveStars 60s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveStars {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 1000px 1000px;
+            }
+        }
+
+        header {
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #00d4ff;
+        }
+
+        section {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        code {
+            display: block;
+            background: #000;
+            padding: 10px;
+            border-radius: 10px;
+            color: #00ffcc;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: #00ffcc;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>DISEÑO DE BASES DE DATOS - RA2</h1>
+        <p>Aprende a ver datos digital 🚀</p>
+    </header>
+
+    <section>
+
+        <div class="card">
+            <h2>🔹 ¿Qué es SQL?</h2>
+            <p>SQL es un lenguaje que usamos para hablar con las bases de datos. Es como darle instrucciones a una
+                computadora para ver, cambiar o contar información.</p>
+        </div>
+
+        <div class="card">
+            <h2>🔍 Ver datos</h2>
+            <p>Para ver toda la información:</p>
+            <code>SELECT * FROM nombre_tabla;</code>
+            <p>👉 Muestra todos los datos de la tabla</p>
+
+            <p>Para ver solo algunos campos:</p>
+            <code>SELECT campo1, campo2 FROM tabla;</code>
+            <p>👉 Solo muestra columnas específicas</p>
+        </div>
+
+        <div class="card">
+            <h2>🔢 Contar datos</h2>
+            <code>SELECT COUNT(*) FROM nombre_tabla;</code>
+            <p>👉 Cuenta cuántos registros hay</p>
+
+            <code>SELECT COUNT(*) AS total_solteros
+FROM nombre_tabla
+WHERE estado_civil IN ('Soltero', 'soltero', 'SOLTERO');</code>
+            <p>👉 Cuenta cuántos cumplen una condición</p>
+        </div>
+
+        <div class="card">
+            <h2>🎯 Filtrar datos</h2>
+            <code>SELECT *
+FROM nombre_tabla
+WHERE edad BETWEEN 18 AND 25;</code>
+            <p>👉 Muestra personas entre 18 y 25 años</p>
+        </div>
+
+    </section>
+    <section>
+        <div class="card">
+            <h1>🔍 Caso: Desfalco en la Empresa</h1>
+
+            <p>
+                La empresa <strong>TechSolutions S.R.L.</strong> ha detectado un posible desfalco interno.
+                Se sospecha que uno o varios empleados han manipulado la nómina para recibir un sueldo
+                desproporcionado en comparación con su cargo.
+            </p>
+
+            <p>
+                Tu tarea como analista es revisar la base de datos de empleados y encontrar posibles
+                sospechosos identificando salarios anormalmente altos.
+            </p>
+
+            <h2>📊 Nómina de Empleados</h2>
+
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Cargo</th>
+                    <th>Sueldo (RD$)</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Ana Pérez</td>
+                    <td>Auxiliar</td>
+                    <td>25,000</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Luis Gómez</td>
+                    <td>Supervisor</td>
+                    <td>45,000</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Carlos Ruiz</td>
+                    <td>Técnico</td>
+                    <td>30,000</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Marta Díaz</td>
+                    <td>Auxiliar</td>
+                    <td>26,000</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Pedro López</td>
+                    <td>Gerente</td>
+                    <td>85,000</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Sofía Ramírez</td>
+                    <td>Técnico</td>
+                    <td>32,000</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Juan Torres</td>
+                    <td>Auxiliar</td>
+                    <td>24,500</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Laura Méndez</td>
+                    <td>Supervisor</td>
+                    <td>47,000</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>David Castro</td>
+                    <td>Técnico</td>
+                    <td>31,000</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Elena Vargas</td>
+                    <td>Auxiliar</td>
+                    <td>25,500</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>Raúl Herrera</td>
+                    <td>Supervisor</td>
+                    <td>46,000</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>Patricia León</td>
+                    <td>Técnico</td>
+                    <td>33,000</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>José Molina</td>
+                    <td>Auxiliar</td>
+                    <td>24,000</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>Andrea Cruz</td>
+                    <td>Gerente</td>
+                    <td>90,000</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>Ricardo Núñez</td>
+                    <td>Técnico</td>
+                    <td>29,500</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>Daniela Peña</td>
+                    <td>Auxiliar</td>
+                    <td>26,500</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>Fernando Gil</td>
+                    <td>Supervisor</td>
+                    <td>44,000</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>Claudia Reyes</td>
+                    <td>Técnico</td>
+                    <td>30,500</td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>Mario Santos</td>
+                    <td>Auxiliar</td>
+                    <td>25,200</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>???</td>
+                    <td>Auxiliar</td>
+                    <td>150,000</td>
+                </tr>
+            </table>
+
+            <h2>💻 Consulta SQL</h2>
+
+            <pre>
+SELECT id, nombre, cargo, sueldo
+FROM empleados
+WHERE sueldo > (
+    SELECT AVG(sueldo) * 2
+    FROM empleados
+);
+    </pre>
+
+            <p>
+                ⚠️ Esta consulta muestra empleados cuyo sueldo es más del doble del promedio,
+                lo cual podría indicar una anomalía o posible fraude.
+            </p>
+        </div>
+        <div class="card">
+            <h2>🧠 Explicación de la Consulta SQL</h2>
+
+            <pre>
+SELECT id, nombre, cargo, sueldo
+FROM empleados
+WHERE sueldo > (
+    SELECT AVG(sueldo) * 2
+    FROM empleados
+);
+    </pre>
+
+            <h3>🔍 1. SELECT (¿qué quieres ver?)</h3>
+            <p>
+                Indica las columnas que se mostrarán en el resultado:
+                <br><strong>id</strong>, <strong>nombre</strong>, <strong>cargo</strong> y <strong>sueldo</strong>.
+            </p>
+
+            <h3>📦 2. FROM (¿de dónde salen los datos?)</h3>
+            <p>
+                Especifica la tabla que contiene la información:
+                <br><strong>empleados</strong>.
+            </p>
+
+            <h3>⚖️ 3. WHERE (condición)</h3>
+            <p>
+                Filtra los resultados:
+                <br>Solo se mostrarán empleados cuyo sueldo sea mayor que un valor calculado.
+            </p>
+
+            <h3>🧠 4. Subconsulta</h3>
+            <pre>
+SELECT AVG(sueldo) * 2
+FROM empleados
+    </pre>
+
+            <p>
+                Esta consulta interna realiza dos acciones:
+                <br>✔ Calcula el promedio de los sueldos (<strong>AVG</strong>)
+                <br>✔ Multiplica ese promedio por 2
+            </p>
+
+            <h3>🔗 5. ¿Cómo funciona todo junto?</h3>
+            <p>
+                Primero se calcula el promedio de los sueldos y se multiplica por 2.
+                Luego, la consulta principal muestra solo los empleados que ganan más que ese valor.
+            </p>
+
+            <h3>🚨 6. Resultado</h3>
+            <p>
+                Se obtienen los empleados con sueldos desproporcionados,
+                lo que puede indicar una posible anomalía o fraude en la nómina.
+            </p>
+        </div>
+    </section>
+
+</body>
+
+</html>

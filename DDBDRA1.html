@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño y Desarrollo de Base de Datos</title>
+    <link rel="icon" href="img/bdanimado.gif" type="image/svg+xml">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle at bottom, #020111 0%, #000000 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Estrellas */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            animation: moveStars 60s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveStars {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 1000px 1000px;
+            }
+        }
+
+        header {
+            text-align: center;
+            padding: 30px;
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.05);
+            margin: 20px;
+            padding: 5px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #38bdf8;
+        }
+
+        p {
+            font-size: 1.1em;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+            margin: 10px auto;
+            border-radius: 15px;
+            max-width: 800px;
+        }
+
+        .bloque {
+            display: flex;
+            justify-content: center;
+
+            flex-wrap: wrap;
+        }
+
+        .bloqueb {
+            display: flex;
+            justify-content: center;
+
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        .bloque div {
+            width: 30%;
+            min-width: 200px;
+            border: white 1px solid;
+            border-radius: 15px;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .bloqueb div {
+            width: 95%;
+            min-width: 200px;
+            border: white 1px solid;
+            border-radius: 15px;
+            margin: 5px;
+            padding: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <h1>DISEÑO DE BASES DE DATOS - RA1</h1>
+        <p>Aprende fácil en el ANDRISVERSO 🚀</p>
+    </header>
+    <!-- Primer bloque de información -->
+    <section class="bloque">
+        <div class="divinfo">
+            <h2>¿Qué es un dato?</h2>
+            <p>Un dato es un valor simple, como un número o una palabra. Ejemplo: 10, "Juan".</p>
+        </div>
+        <div class="divinfo">
+            <h2>¿Qué es información?</h2>
+            <p>La información es cuando los datos tienen sentido. Ejemplo: "Juan tiene 10 años".</p>
+        </div>
+        <div class="divinfo">
+            <h2>Diferencia entre dato e información</h2>
+            <p>Dato = algo suelto. Información = datos organizados que explican algo.</p>
+        </div>
+    </section>
+
+    <section>
+        <img src="img/data-info-cono.png" alt="Dato e Información">
+    </section>
+    <!-- Segundo bloque de información -->
+    <section class="bloque">
+        <div class="divinfo">
+            <h2>¿Qué es una base de datos?</h2>
+            <p>Es como una libreta digital donde guardamos información organizada.</p>
+            <p>Una base de datos es un lugar donde guardamos mucha información organizada para poder usarla
+                fácilmente.
+            </p>
+        </div>
+        <div class="divinfo">
+            <h2>¿Qué es un campo?</h2>
+            <p>
+                Un campo es cada una de las columnas de una tabla en una base de datos.
+                Cada campo almacena un tipo específico de información sobre un elemento.
+                Por ejemplo, en una tabla de estudiantes, los campos pueden ser: nombre, edad, dirección o teléfono.
+            </p>
+
+        </div>
+        <div class="divinfo">
+            <h2>¿Qué es un registro?</h2>
+            <p>
+                Un registro es cada una de las filas de una tabla en una base de datos.
+                Un registro contiene todos los datos relacionados a un mismo elemento.
+                Por ejemplo, en una tabla de estudiantes, un registro sería toda la información de un estudiante: su
+                nombre, edad, dirección, etc.
+            </p>
+        </div>
+    </section>
+    <section>
+        <img src="img/campos-registros.png" alt="Campos y Registros">
+    </section>
+    <!-- 3er bloque de información -->
+    <section class="bloqueb">
+        <h2>Modelos de bases de datos</h2>
+        <section class="bloqueb">
+            <div>
+                <img src="img/modelorelacional.png" alt="">
+                <img src="img/jerarquico.png" alt="">
+                <img src="img/red.png" alt="">
+            </div>
+            <div>
+                <h2>Modelo de base de datos entidad-relación</h2>
+                <p>
+                    El modelo entidad-relación es una forma de representar la información mediante entidades, atributos
+                    y relaciones.
+                    Una entidad es un objeto o elemento del mundo real (como un estudiante o un producto), los atributos
+                    son sus características (nombre, edad, precio), y las relaciones indican cómo se conectan entre sí.
+                    Este modelo se utiliza para diseñar bases de datos de forma visual antes de crearlas, facilitando la
+                    organización y comprensión de los datos.
+                </p>
+                <h2>Diagrama entidad-relación</h2>
+                <p>Entidad: algo (Persona).<br>
+                    Atributos: características (nombre, edad).</p>
+                <img src="img/Entidad-relacion.png" alt="Modelo Entidad-Relación">
+                <h2>🧩 Tipo de relaciones (cardinalidad)</h2>
+                <ol>
+                    <li>Un empleado trabaja en un solo departamento → (1,1)</li>
+                    <li>Un departamento tiene muchos empleados → (1,N)</li>
+                </ol>
+
+                <table border="1" cellpadding="10" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Cardinalidad</th>
+                            <th>Significado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 : 1</td>
+                            <td>Uno con uno</td>
+                        </tr>
+                        <tr>
+                            <td>1 : N</td>
+                            <td>Uno con muchos</td>
+                        </tr>
+                        <tr>
+                            <td>N : M</td>
+                            <td>Muchos con muchos</td>
+                        </tr>
+                        <tr>
+                            <td>(0,1)</td>
+                            <td>Cero o uno (opcional)</td>
+                        </tr>
+                        <tr>
+                            <td>(1,1)</td>
+                            <td>Exactamente uno (obligatorio)</td>
+                        </tr>
+                        <tr>
+                            <td>(0,N)</td>
+                            <td>Cero o muchos</td>
+                        </tr>
+                        <tr>
+                            <td>(1,N)</td>
+                            <td>Uno o muchos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </section>
+
+
+    <section>
+        <h2>¿Qué es SQL?</h2>
+        <p>
+            SQL significa <strong>Structured Query Language</strong> (Lenguaje de Consultas Estructuradas).
+            Es un lenguaje que se usa para hablar con las bases de datos.
+            Sirve para guardar, buscar, cambiar y borrar información.
+        </p>
+
+        <h2>¿Qué es MySQL?</h2>
+        <p>
+            MySQL es un programa que usa SQL para crear y manejar bases de datos.
+            El nombre MySQL combina "My" (nombre) y "SQL".
+            Ayuda a guardar información como nombres, edades o productos de forma ordenada.
+        </p>
+
+        <h3>🧠 Ejemplo fácil:</h3>
+        <p>
+            SQL es como el idioma que usas para pedir información.<br>
+            MySQL es el sistema que escucha ese idioma y hace lo que le pides.
+        </p>
+    </section>
+    <section>
+        <h2>¿Qué es XAMPP?</h2>
+        <p>
+            XAMPP no es un solo programa, sino un paquete de herramientas que facilita trabajar con páginas web y bases
+            de datos en tu computadora.
+        </p>
+
+        <h3>🧠 Importante:</h3>
+        <p>
+            XAMPP incluye varios programas, uno de ellos es MySQL.
+        </p>
+
+        <h3>📦 ¿Qué contiene XAMPP?</h3>
+        <ul>
+            <li><strong>Apache</strong>: para ejecutar páginas web</li>
+            <li><strong>MySQL</strong>: programa para manejar bases de datos</li>
+            <li><strong>PHP</strong>: lenguaje de programación</li>
+            <li><strong>phpMyAdmin</strong>: herramienta para usar MySQL de forma visual</li>
+        </ul>
+
+        <h3>🔍 Entonces, ¿cómo se relacionan?</h3>
+        <p>
+            - <strong>SQL</strong>: es el lenguaje (lo que escribimos)<br>
+            - <strong>MySQL</strong>: es el programa que ejecuta ese lenguaje<br>
+            - <strong>XAMPP</strong>: es la herramienta que trae todo listo para usar
+        </p>
+
+        <h3>🎯 Ejemplo sencillo:</h3>
+        <p>
+            XAMPP es como una caja de herramientas.<br>
+            Dentro de esa caja está MySQL, que es la herramienta que usamos para trabajar con bases de datos.
+        </p>
+    </section>
+    <section>
+        <h2>¿Qué es un comando?</h2>
+        <p>
+            Un comando es una instrucción que le damos a la computadora para que realice una acción.
+            En SQL, los comandos nos permiten trabajar con bases de datos, como crearlas, usarlas o crear tablas.
+        </p>
+
+        <p>
+            🧠 Todos los comandos SQL terminan con punto y coma (<strong>;</strong>).
+        </p>
+
+        <hr>
+        <h2>¿Como escribir comandos SQL con XAMPP y PHPMyAdmin?</h2>
+        <img src="img/xamppsql1.jpg" alt="">
+        <img src="img/xamppsql2.jpg" alt="">
+        <img src="img/xamppsql3.jpg" alt="">
+
+        <hr>
+        <div>
+            <h2>Crear base de datos</h2>
+            <p>
+                Este comando se utiliza para crear una nueva base de datos donde se almacenará la información.
+            </p>
+
+            <p><code>CREATE DATABASE escuela;</code></p>
+
+            <h3>📌 ¿Qué significa cada parte?</h3>
+            <ul>
+                <li><strong>CREATE</strong>: indica que vamos a crear algo</li>
+                <li><strong>DATABASE</strong>: especifica que será una base de datos</li>
+                <li><strong>escuela</strong>: es el nombre de la base de datos</li>
+            </ul>
+
+            <p>
+                💡 Puedes cambiar el nombre <strong>escuela</strong> por cualquier otro nombre válido.
+            </p>
+        </div>
+
+        <hr>
+        <img src="img/xamppsql4.jpg" alt="">
+        <div>
+            <h2>Comando USE</h2>
+            <p>
+                Este comando sirve para seleccionar la base de datos con la que queremos trabajar.
+            </p>
+
+            <p><code>USE escuela;</code></p>
+
+            <h3>📌 ¿Qué significa?</h3>
+            <ul>
+                <li><strong>USE</strong>: indica que vamos a usar algo</li>
+                <li><strong>escuela</strong>: es la base de datos seleccionada</li>
+            </ul>
+
+            <p>
+                ⚠️ Es importante usar este comando antes de crear tablas, porque le indicamos a la computadora
+                en qué base de datos debe trabajar.
+            </p>
+        </div>
+
+        <hr>
+
+        <div>
+            <h2>Crear tabla</h2>
+            <p>
+                Este comando permite crear una tabla dentro de la base de datos seleccionada.
+                Las tablas son donde se guardan los datos organizados en filas y columnas.
+            </p>
+
+            <p>
+                <code>CREATE TABLE estudiantes ( id INT, nombre VARCHAR(50) );</code>
+            </p>
+
+            <h3>📌 ¿Qué significa cada parte?</h3>
+            <ul>
+                <li><strong>CREATE TABLE</strong>: indica que vamos a crear una tabla</li>
+                <li><strong>estudiantes</strong>: nombre de la tabla</li>
+                <li><strong>id</strong>: nombre del campo (columna)</li>
+                <li><strong>INT</strong>: tipo de dato numérico entero</li>
+                <li><strong>nombre</strong>: otro campo de la tabla</li>
+                <li><strong>VARCHAR(50)</strong>: tipo de dato texto con máximo 50 caracteres</li>
+            </ul>
+
+            <h3>🧠 Importante:</h3>
+            <p>
+                Cada campo se separa con comas y se define con un nombre y un tipo de dato.
+            </p>
+            <h2>Ejemplo de creacion de tabla:</h2>
+            <img src="img/xamppsql6.jpg" alt="">
+        </div>
+    </section>
+
+
+
+
+
+</body>
+
+</html>

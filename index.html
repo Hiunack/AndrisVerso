@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño y Desarrollo de Base de Datos</title>
+    <link rel="icon" href="img/logo.png" type="image/svg+xml">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background: radial-gradient(circle at center, #0a001f 0%, #000011 100%);
+            color: white;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* === FONDO UNIVERSO ANIMADO === */
+        .stars,
+        .stars2,
+        .nebula {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .stars {
+            background: transparent;
+            box-shadow:
+                50px 80px #fff, 120px 200px #fff, 300px 150px #fff,
+                450px 300px #fff, 600px 80px #fff, 750px 400px #fff,
+                900px 120px #fff, 1100px 350px #fff, 200px 500px #fff,
+                800px 550px #fff, 150px 650px #fff, 950px 700px #fff;
+            animation: twinkle 8s infinite alternate;
+        }
+
+        .stars2 {
+            background: transparent;
+            box-shadow:
+                100px 300px 2px #fff, 400px 100px 2px #fff,
+                700px 450px 2px #fff, 950px 200px 2px #fff,
+                250px 150px 2px #fff, 850px 600px 2px #fff;
+            animation: twinkle 12s infinite alternate;
+            opacity: 0.7;
+        }
+
+        .nebula {
+            background: radial-gradient(circle at 30% 20%, rgba(100, 50, 255, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(255, 50, 150, 0.15) 0%, transparent 50%);
+            animation: nebula-move 80s linear infinite;
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes nebula-move {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* === ESTILOS ORIGINALES === */
+        .centrar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header img {
+            width: 200px;
+            height: auto;
+
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.08);
+            margin: 20px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            z-index: 2;
+            position: relative;
+        }
+
+        #sectiona_area_ra {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        #section_area_ra {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        section img {
+            width: 30%;
+            max-width: 300px;
+            height: auto;
+        }
+
+        .iconora {
+            width: 220px;
+            height: 220px;
+            margin: 10px;
+            padding: 15px;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .iconora:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+
+        h1,
+        h2,
+        li,
+        p {
+            color: white;
+        }
+
+        a {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Fondo Universo -->
+    <div class="nebula"></div>
+    <div class="stars"></div>
+    <div class="stars2"></div>
+
+    <header class="centrar">
+        <img src="img/logo.png" alt="Logo">
+    </header>
+
+    <main>
+        <section class="centrar" id="sectiona_area_ra">
+            <div style="flex-direction: column;">
+                <h1>Diseño y Desarrollo de Base de Datos</h1>
+                <ol>
+                    <li><strong>Grado:</strong> 4to informática</li>
+                    <li><strong>Código MF:</strong> MF_033_3</li>
+                </ol>
+            </div>
+            <img src="img/bdanimado.gif" style="border-radius: 20px" alt="">
+        </section>
+
+        <section id="section_area_ra">
+            <div>
+                <a href="DDBDRA1.html" class="iconora">
+                    <h2>RA1</h2>
+                    RA4.1 Diseñar bases de datos para responder a los requerimientos de desarrollo bajo un modelo
+                    establecido, aplicando criterios de normalización de datos.
+                </a>
+            </div>
+            <div>
+                <a href="DDBDRA2.html" class="iconora">
+                    <h2>RA2</h2>
+                    RA4.2 Diseñar diccionario de datos y documentación general para apoyar la gestión de administración
+                    de bases de datos, de acuerdo con el modelo establecido.
+                </a>
+            </div>
+            <div>
+                <a href="DDBDRA3.html" class="iconora">
+                    <h2>RA3</h2>
+                    RA4.3 Crear consultas (Queries) de datos para apoyar el desarrollo de las aplicaciones, de acuerdo
+                    con los requerimientos del diseño establecido.
+                </a>
+            </div>
+            <div>
+                <a href="DDBDRA4.html" class="iconora">
+                    <h2>RA4</h2>
+                    RA4.4 Proponer estrategia de alta disponibilidad de los servicios de bases de datos para asegurar la
+                    continuidad del negocio, cumpliendo con los requerimientos establecidos.
+                </a>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
