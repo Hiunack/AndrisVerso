@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guía de HTML y CSS para Niños 🚀</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    :root {
+      --html-color: #e44d26;
+      --css-color: #264de4;
+      --accent: #f7c948;
+      --green: #22c55e;
+      --purple: #a855f7;
+      --bg: #f0f4ff;
+      --card: #ffffff;
+      --text: #1e1b4b;
+      --muted: #6b7280;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+      padding: 60px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 12px; position: relative; }
+    .hero p  { font-size: 1.2rem; opacity: .85; max-width: 500px; margin: 0 auto; position: relative; }
+    .hero-emoji { font-size: 4rem; display: block; margin-bottom: 16px; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 20px 60px; }
+
+    /* ── SECTION HEADERS ── */
+    .chapter {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 52px 0 24px;
+      padding: 18px 24px;
+      border-radius: var(--radius);
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+    .chapter.html { background: linear-gradient(135deg, #e44d26, #f16529); }
+    .chapter.css  { background: linear-gradient(135deg, #264de4, #2965f1); }
+    .chapter-icon { font-size: 2rem; }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.07);
+      border-left: 5px solid transparent;
+    }
+    .card.html-card { border-left-color: var(--html-color); }
+    .card.css-card  { border-left-color: var(--css-color); }
+
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card h2 .badge {
+      background: var(--accent);
+      color: #1e1b4b;
+      font-size: .7rem;
+      font-weight: 900;
+      padding: 3px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .card p { color: #374151; margin-bottom: 10px; font-size: 1rem; }
+    .card p:last-child { margin-bottom: 0; }
+
+    /* why box */
+    .why {
+      background: #fef9ec;
+      border: 2px dashed var(--accent);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-top: 14px;
+      font-size: .95rem;
+      color: #92400e;
+    }
+    .why strong { color: #b45309; }
+
+    /* ── CODE BLOCKS ── */
+    .code-wrap {
+      background: #1e1b4b;
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin: 14px 0;
+      overflow-x: auto;
+    }
+    .code-wrap pre {
+      font-family: 'Courier New', monospace;
+      font-size: .88rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+      white-space: pre;
+    }
+    .c-tag   { color: #f472b6; }
+    .c-attr  { color: #93c5fd; }
+    .c-val   { color: #86efac; }
+    .c-text  { color: #fde68a; }
+    .c-com   { color: #94a3b8; font-style: italic; }
+    .c-sel   { color: #f472b6; }
+    .c-prop  { color: #93c5fd; }
+    .c-pval  { color: #86efac; }
+
+    /* ── ANALOGY BOXES ── */
+    .analogy {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-top: 14px;
+      font-size: .95rem;
+      color: #4c1d95;
+      display: flex;
+      gap: 12px;
+    }
+    .analogy .icon { font-size: 1.8rem; flex-shrink: 0; }
+
+    /* ── TAG PILLS ── */
+    .tag-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .tag-pill {
+      background: #eff6ff;
+      border: 2px solid #bfdbfe;
+      color: #1d4ed8;
+      font-family: monospace;
+      font-size: .88rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 999px;
+    }
+
+    /* ── SELECTOR DEMO ── */
+    .selector-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 14px;
+    }
+    @media (max-width: 600px) { .selector-demo { grid-template-columns: 1fr; } }
+    .sel-box {
+      border-radius: 12px;
+      padding: 16px 18px;
+      font-size: .9rem;
+    }
+    .sel-box h4 { font-size: 1rem; margin-bottom: 8px; }
+    .sel-box.type-sel  { background: #f0fdf4; border: 2px solid #86efac; color: #14532d; }
+    .sel-box.id-sel    { background: #fff7ed; border: 2px solid #fcd34d; color: #78350f; }
+    .sel-box.class-sel { background: #fdf2f8; border: 2px solid #f9a8d4; color: #701a75; }
+
+    /* ── STEPS ── */
+    .steps { counter-reset: step; }
+    .step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .step-num {
+      counter-increment: step;
+      background: var(--purple);
+      color: white;
+      font-weight: 900;
+      font-size: 1rem;
+      min-width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-content p { margin: 0; font-size: .97rem; color: #374151; }
+    .step-content strong { color: var(--text); }
+
+    /* ── TABLE ── */
+    .nice-table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: .9rem; }
+    .nice-table th {
+      background: #1e1b4b;
+      color: white;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 700;
+    }
+    .nice-table td { padding: 10px 14px; border-bottom: 1px solid #e5e7eb; }
+    .nice-table tr:nth-child(even) td { background: #f9fafb; }
+    .nice-table code {
+      background: #f3f4f6;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: .85rem;
+      font-family: monospace;
+      color: #e44d26;
+    }
+
+    /* ── FUN FACT ── */
+    .fun-fact {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-top: 14px;
+      color: #065f46;
+      display: flex;
+      gap: 12px;
+      font-size: .95rem;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: white;
+      border-radius: var(--radius);
+      padding: 28px 30px;
+      margin: 32px 0 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,.07);
+    }
+    .toc h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 16px; color: var(--text); }
+    .toc ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; }
+    @media (max-width: 520px) { .toc ul { grid-template-columns: 1fr; } }
+    .toc a {
+      text-decoration: none;
+      color: #4b5563;
+      font-size: .95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .2s;
+    }
+    .toc a:hover { color: var(--html-color); }
+    .toc a .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-html { background: var(--html-color); }
+    .dot-css  { background: var(--css-color); }
+
+    /* ── PROGRESS BAR DECORATIVE ── */
+    .progress-bar {
+      height: 6px;
+      border-radius: 999px;
+      margin: 6px 0 18px;
+    }
+    .progress-bar.html { background: linear-gradient(90deg, #e44d26, #f16529); }
+    .progress-bar.css  { background: linear-gradient(90deg, #264de4, #2965f1); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    footer strong { color: var(--text); }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="hero-emoji">🚀</span>
+  <h1>¡Aprende HTML y CSS!</h1>
+  <p>Una guía súper fácil para que empieces a crear tus propias páginas web</p>
+</header>
+
+<div class="container">
+
+  <!-- TABLE OF CONTENTS -->
+  <nav class="toc">
+    <h3>📋 ¿Qué vamos a aprender hoy?</h3>
+    <ul>
+      <li><a href="#que-html"><span class="dot dot-html"></span>¿Qué es HTML?</a></li>
+      <li><a href="#que-css"><span class="dot dot-css"></span>¿Qué es CSS?</a></li>
+      <li><a href="#vscode"><span class="dot dot-html"></span>Visual Studio Code</a></li>
+      <li><a href="#como-css"><span class="dot dot-css"></span>¿Cómo funciona CSS?</a></li>
+      <li><a href="#estructura"><span class="dot dot-html"></span>Estructura básica HTML</a></li>
+      <li><a href="#style-tag"><span class="dot dot-css"></span>CSS con &lt;style&gt;</a></li>
+      <li><a href="#etiquetas"><span class="dot dot-html"></span>Etiquetas comunes</a></li>
+      <li><a href="#externo"><span class="dot dot-css"></span>CSS externo</a></li>
+      <li><a href="#audio"><span class="dot dot-html"></span>Agregar audio</a></li>
+      <li><a href="#selectores"><span class="dot dot-css"></span>Selectores</a></li>
+      <li><a href="#video"><span class="dot dot-html"></span>Agregar video</a></li>
+      <li><a href="#semantico"><span class="dot dot-html"></span>HTML Semántico</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+       CAPÍTULO HTML
+  ══════════════════════════════════════ -->
+  <div class="chapter html" id="html-cap">
+    <span class="chapter-icon">🧱</span>
+    <div>
+      <div style="font-size:.8rem;opacity:.8;font-weight:600;letter-spacing:.08em;">CAPÍTULO 1</div>
+      HTML — Los Ladrillos de la Web
+    </div>
+  </div>
+  <div class="progress-bar html"></div>
+
+  <!-- 1. QUÉ ES HTML -->
+  <div class="card html-card" id="que-html">
+    <h2>🌐 ¿Qué es HTML? <span class="badge">Lo más importante</span></h2>
+    <p><strong>HTML</strong> significa <em>HyperText Markup Language</em> (Lenguaje de Marcado de Hipertexto). Es el lenguaje que usamos para decirle al navegador (Chrome, Firefox, etc.) <strong>qué cosas debe mostrar</strong> en una página web.</p>
+    <p>HTML no es un lenguaje de programación como los que hacen videojuegos. Es un lenguaje de <strong>estructura</strong>: le dice al navegador si algo es un título, un párrafo, una imagen o un botón.</p>
+    <div class="analogy">
+      <span class="icon">🏠</span>
+      <div><strong>Imagínalo así:</strong> Si una página web fuera una casa, el HTML sería la <strong>estructura</strong> — las paredes, el techo y las ventanas. Sin HTML, no hay casa.</div>
+    </div>
+    <div class="why">
+      <strong>¿Por qué existe HTML?</strong> Porque las computadoras necesitan instrucciones muy claras. Si escribes "Hola" en un archivo de texto, la computadora no sabe si es un título gigante o un párrafo pequeño. HTML le da ese contexto.
+    </div>
+  </div>
+
+  <!-- 2. VISUAL STUDIO CODE -->
+  <div class="card html-card" id="vscode">
+    <h2>💻 ¿Qué es Visual Studio Code?</h2>
+    <p><strong>Visual Studio Code (VS Code)</strong> es un programa gratuito creado por Microsoft que usamos para escribir código. Es como un cuaderno especial para programadores.</p>
+    <p>Cuando escribes código en VS Code, el programa hace cosas geniales automáticamente:</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content"><p><strong>Colores en el código</strong> — Pinta cada parte de un color diferente para que sea fácil de leer.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content"><p><strong>Autocompletado</strong> — Si empiezas a escribir una etiqueta, VS Code la termina por ti.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content"><p><strong>Detecta errores</strong> — Si algo está mal escrito, te avisa con una línea roja.</p></div>
+      </div>
+    </div>
+    <div class="why">
+      <strong>¿Por qué usarlo?</strong> Podrías escribir HTML en el Bloc de notas, pero VS Code hace todo mucho más fácil. Es como escribir con lápiz normal vs. escribir con un lápiz mágico que corrige solo.
+    </div>
+    <div class="fun-fact">
+      <span>🎉</span>
+      <div><strong>Dato curioso:</strong> VS Code es completamente <strong>gratis</strong> y más de 14 millones de programadores en el mundo lo usan todos los días.</div>
+    </div>
+  </div>
+
+  <!-- 3. ESTRUCTURA BÁSICA -->
+  <div class="card html-card" id="estructura">
+    <h2>🏗️ Estructura Básica de HTML</h2>
+    <p>Todo archivo HTML empieza igual. Tiene unas etiquetas principales que siempre deben estar. Mira el esqueleto:</p>
+    <div class="code-wrap"><pre><span class="c-tag">&lt;!DOCTYPE html&gt;</span>  <span class="c-com">&lt;!-- Le dice al navegador que esto es HTML5 --&gt;</span>
+<span class="c-tag">&lt;html</span> <span class="c-attr">lang</span>=<span class="c-val">"es"</span><span class="c-tag">&gt;</span>    <span class="c-com">&lt;!-- Todo el HTML va aquí dentro --&gt;</span>
+
+  <span class="c-tag">&lt;head&gt;</span>               <span class="c-com">&lt;!-- Información que el visitante NO ve --&gt;</span>
+    <span class="c-tag">&lt;meta</span> <span class="c-attr">charset</span>=<span class="c-val">"UTF-8"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;title&gt;</span><span class="c-text">Mi primera página</span><span class="c-tag">&lt;/title&gt;</span>
+  <span class="c-tag">&lt;/head&gt;</span>
+
+  <span class="c-tag">&lt;body&gt;</span>               <span class="c-com">&lt;!-- Todo lo que el visitante SÍ ve --&gt;</span>
+    <span class="c-tag">&lt;h1&gt;</span><span class="c-text">¡Hola, Mundo!</span><span class="c-tag">&lt;/h1&gt;</span>
+    <span class="c-tag">&lt;p&gt;</span><span class="c-text">Esta es mi primera página web.</span><span class="c-tag">&lt;/p&gt;</span>
+  <span class="c-tag">&lt;/body&gt;</span>
+
+<span class="c-tag">&lt;/html&gt;</span></pre></div>
+    <table class="nice-table">
+      <tr><th>Etiqueta</th><th>¿Para qué sirve?</th></tr>
+      <tr><td><code>&lt;!DOCTYPE html&gt;</code></td><td>Avisa que usamos la versión más nueva de HTML</td></tr>
+      <tr><td><code>&lt;html&gt;</code></td><td>El contenedor de toda la página</td></tr>
+      <tr><td><code>&lt;head&gt;</code></td><td>Información técnica (título, fuentes, etc.) — no se ve en pantalla</td></tr>
+      <tr><td><code>&lt;title&gt;</code></td><td>El texto que aparece en la pestaña del navegador</td></tr>
+      <tr><td><code>&lt;body&gt;</code></td><td>Todo lo que el usuario ve en pantalla</td></tr>
+    </table>
+    <div class="why">
+      <strong>¿Por qué siempre la misma estructura?</strong> Es como las reglas de un examen: siempre escribes tu nombre arriba, la fecha, el título. El navegador necesita ese orden para entender dónde empieza y termina cada sección.
+    </div>
+  </div>
+
+  <!-- 4. ETIQUETAS COMUNES -->
+  <div class="card html-card" id="etiquetas">
+    <h2>🏷️ Etiquetas Comunes</h2>
+    <p>Una <strong>etiqueta</strong> es como una orden entre corchetes angulares <code>&lt; &gt;</code>. La mayoría tienen una etiqueta de apertura y una de cierre (con <code>/</code>).</p>
+    <div class="tag-list">
+      <span class="tag-pill">&lt;h1&gt; a &lt;h6&gt;</span>
+      <span class="tag-pill">&lt;p&gt;</span>
+      <span class="tag-pill">&lt;a&gt;</span>
+      <span class="tag-pill">&lt;img&gt;</span>
+      <span class="tag-pill">&lt;ul&gt; &lt;li&gt;</span>
+      <span class="tag-pill">&lt;div&gt;</span>
+      <span class="tag-pill">&lt;span&gt;</span>
+      <span class="tag-pill">&lt;strong&gt;</span>
+      <span class="tag-pill">&lt;button&gt;</span>
+      <span class="tag-pill">&lt;form&gt;</span>
+    </div>
+    <div class="code-wrap" style="margin-top:16px;"><pre><span class="c-com">&lt;!-- Títulos: h1 es el más grande, h6 el más pequeño --&gt;</span>
+<span class="c-tag">&lt;h1&gt;</span><span class="c-text">Título Principal</span><span class="c-tag">&lt;/h1&gt;</span>
+<span class="c-tag">&lt;h2&gt;</span><span class="c-text">Subtítulo</span><span class="c-tag">&lt;/h2&gt;</span>
+
+<span class="c-com">&lt;!-- Párrafo de texto --&gt;</span>
+<span class="c-tag">&lt;p&gt;</span><span class="c-text">Soy un párrafo de texto normal.</span><span class="c-tag">&lt;/p&gt;</span>
+
+<span class="c-com">&lt;!-- Enlace (link) --&gt;</span>
+<span class="c-tag">&lt;a</span> <span class="c-attr">href</span>=<span class="c-val">"https://google.com"</span><span class="c-tag">&gt;</span><span class="c-text">Ir a Google</span><span class="c-tag">&lt;/a&gt;</span>
+
+<span class="c-com">&lt;!-- Imagen --&gt;</span>
+<span class="c-tag">&lt;img</span> <span class="c-attr">src</span>=<span class="c-val">"gato.jpg"</span> <span class="c-attr">alt</span>=<span class="c-val">"Un gato bonito"</span><span class="c-tag">&gt;</span>
+
+<span class="c-com">&lt;!-- Lista con puntos --&gt;</span>
+<span class="c-tag">&lt;ul&gt;</span>
+  <span class="c-tag">&lt;li&gt;</span><span class="c-text">Manzana</span><span class="c-tag">&lt;/li&gt;</span>
+  <span class="c-tag">&lt;li&gt;</span><span class="c-text">Banana</span><span class="c-tag">&lt;/li&gt;</span>
+<span class="c-tag">&lt;/ul&gt;</span></pre></div>
+    <div class="why">
+      <strong>¿Por qué hay tantas etiquetas?</strong> Porque cada tipo de contenido es diferente. Un título no es lo mismo que un párrafo, y un enlace no es lo mismo que una imagen. Tener etiquetas distintas le ayuda al navegador (y a Google) a entender bien tu página.
+    </div>
+  </div>
+
+  <!-- 5. AUDIO -->
+  <div class="card html-card" id="audio">
+    <h2>🎵 Agregar Audio</h2>
+    <p>Para poner un sonido o canción en tu página web usamos la etiqueta <code>&lt;audio&gt;</code>.</p>
+    <div class="code-wrap"><pre><span class="c-tag">&lt;audio</span> <span class="c-attr">controls</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;source</span> <span class="c-attr">src</span>=<span class="c-val">"cancion.mp3"</span> <span class="c-attr">type</span>=<span class="c-val">"audio/mpeg"</span><span class="c-tag">&gt;</span>
+  <span class="c-text">Tu navegador no soporta audio.</span>
+<span class="c-tag">&lt;/audio&gt;</span></pre></div>
+    <table class="nice-table">
+      <tr><th>Atributo</th><th>¿Qué hace?</th></tr>
+      <tr><td><code>controls</code></td><td>Muestra botones de play, pausa y volumen</td></tr>
+      <tr><td><code>autoplay</code></td><td>Empieza a sonar automáticamente (¡úsalo con cuidado!)</td></tr>
+      <tr><td><code>loop</code></td><td>Repite el audio una y otra vez</td></tr>
+      <tr><td><code>muted</code></td><td>Empieza en silencio</td></tr>
+    </table>
+    <div class="why">
+      <strong>¿Por qué usamos &lt;source&gt; adentro?</strong> Porque no todos los navegadores entienden los mismos formatos de audio. Puedes poner varios <code>&lt;source&gt;</code> y el navegador elegirá el que pueda reproducir.
+    </div>
+  </div>
+
+  <!-- 6. VIDEO -->
+  <div class="card html-card" id="video">
+    <h2>🎬 Agregar Video</h2>
+    <p>Para poner un video en tu página usamos la etiqueta <code>&lt;video&gt;</code>. Funciona muy parecido al audio.</p>
+    <div class="code-wrap"><pre><span class="c-tag">&lt;video</span> <span class="c-attr">controls</span> <span class="c-attr">width</span>=<span class="c-val">"640"</span> <span class="c-attr">height</span>=<span class="c-val">"360"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;source</span> <span class="c-attr">src</span>=<span class="c-val">"pelicula.mp4"</span> <span class="c-attr">type</span>=<span class="c-val">"video/mp4"</span><span class="c-tag">&gt;</span>
+  <span class="c-text">Tu navegador no soporta video.</span>
+<span class="c-tag">&lt;/video&gt;</span>
+
+<span class="c-com">&lt;!-- También puedes insertar un video de YouTube con iframe --&gt;</span>
+<span class="c-tag">&lt;iframe</span>
+  <span class="c-attr">src</span>=<span class="c-val">"https://www.youtube.com/embed/ID_DEL_VIDEO"</span>
+  <span class="c-attr">width</span>=<span class="c-val">"640"</span> <span class="c-attr">height</span>=<span class="c-val">"360"</span>
+  <span class="c-attr">allowfullscreen</span><span class="c-tag">&gt;</span>
+<span class="c-tag">&lt;/iframe&gt;</span></pre></div>
+    <div class="analogy">
+      <span class="icon">📺</span>
+      <div><strong>Analogía:</strong> El <code>&lt;video&gt;</code> es como poner un televisor dentro de tu página web. Tú decides el tamaño del televisor con <code>width</code> y <code>height</code>.</div>
+    </div>
+  </div>
+
+  <!-- 7. HTML SEMÁNTICO -->
+  <div class="card html-card" id="semantico">
+    <h2>🧠 HTML Semántico <span class="badge">Nivel Pro</span></h2>
+    <p><strong>Semántico</strong> significa "con significado". El HTML semántico usa etiquetas cuyos nombres describen exactamente para qué sirven, en vez de usar <code>&lt;div&gt;</code> para todo.</p>
+    <div class="code-wrap"><pre><span class="c-com">&lt;!-- ❌ Sin semántica (difícil de entender) --&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">id</span>=<span class="c-val">"encabezado"</span><span class="c-tag">&gt;</span> ... <span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">id</span>=<span class="c-val">"nav"</span><span class="c-tag">&gt;</span> ... <span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">id</span>=<span class="c-val">"contenido"</span><span class="c-tag">&gt;</span> ... <span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-com">&lt;!-- ✅ Con semántica (fácil de entender) --&gt;</span>
+<span class="c-tag">&lt;header&gt;</span>  <span class="c-com">&lt;!-- Encabezado de la página --&gt;</span>
+  <span class="c-tag">&lt;nav&gt;</span>   <span class="c-com">&lt;!-- Menú de navegación --&gt;</span>
+    <span class="c-tag">&lt;a</span> <span class="c-attr">href</span>=<span class="c-val">"/"</span><span class="c-tag">&gt;</span><span class="c-text">Inicio</span><span class="c-tag">&lt;/a&gt;</span>
+  <span class="c-tag">&lt;/nav&gt;</span>
+<span class="c-tag">&lt;/header&gt;</span>
+
+<span class="c-tag">&lt;main&gt;</span>    <span class="c-com">&lt;!-- Contenido principal --&gt;</span>
+  <span class="c-tag">&lt;article&gt;</span><span class="c-com">&lt;!-- Un artículo o publicación --&gt;</span>
+    <span class="c-tag">&lt;h1&gt;</span><span class="c-text">Mi historia</span><span class="c-tag">&lt;/h1&gt;</span>
+    <span class="c-tag">&lt;p&gt;</span><span class="c-text">Había una vez...</span><span class="c-tag">&lt;/p&gt;</span>
+  <span class="c-tag">&lt;/article&gt;</span>
+  <span class="c-tag">&lt;aside&gt;</span>  <span class="c-com">&lt;!-- Información secundaria / barra lateral --&gt;</span>
+    <span class="c-tag">&lt;p&gt;</span><span class="c-text">Artículos relacionados...</span><span class="c-tag">&lt;/p&gt;</span>
+  <span class="c-tag">&lt;/aside&gt;</span>
+<span class="c-tag">&lt;/main&gt;</span>
+
+<span class="c-tag">&lt;footer&gt;</span>  <span class="c-com">&lt;!-- Pie de página --&gt;</span>
+  <span class="c-tag">&lt;p&gt;</span><span class="c-text">© 2025 Mi Página</span><span class="c-tag">&lt;/p&gt;</span>
+<span class="c-tag">&lt;/footer&gt;</span></pre></div>
+    <div class="why">
+      <strong>¿Por qué usar HTML semántico?</strong> Tres razones: (1) Google entiende mejor tu página y la recomienda más. (2) Las personas ciegas que usan lectores de pantalla pueden navegar mejor. (3) Tú mismo (o tus amigos) pueden entender el código más fácilmente.
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       CAPÍTULO CSS
+  ══════════════════════════════════════ -->
+  <div class="chapter css" id="css-cap">
+    <span class="chapter-icon">🎨</span>
+    <div>
+      <div style="font-size:.8rem;opacity:.8;font-weight:600;letter-spacing:.08em;">CAPÍTULO 2</div>
+      CSS — El Maquillaje de la Web
+    </div>
+  </div>
+  <div class="progress-bar css"></div>
+
+  <!-- 1. QUÉ ES CSS -->
+  <div class="card css-card" id="que-css">
+    <h2>🎨 ¿Qué es CSS?</h2>
+    <p><strong>CSS</strong> significa <em>Cascading Style Sheets</em> (Hojas de Estilo en Cascada). Es el lenguaje que usamos para darle <strong>apariencia</strong> a una página web: colores, tamaños, fuentes, espacios y mucho más.</p>
+    <p>Si HTML es la estructura de la casa, entonces <strong>CSS es la pintura, los muebles y la decoración</strong>.</p>
+    <div class="analogy">
+      <span class="icon">🎭</span>
+      <div><strong>Imagínalo así:</strong> HTML construye los actores del teatro (el título, el párrafo, la imagen). CSS les pone el disfraz: color de ropa, tamaño, posición en el escenario.</div>
+    </div>
+    <div class="why">
+      <strong>¿Por qué está separado del HTML?</strong> Para mantener las cosas ordenadas. El HTML dice <em>qué</em> hay en la página. El CSS dice <em>cómo se ve</em>. Si los mezclas todo, se vuelve un desastre muy difícil de cambiar.
+    </div>
+  </div>
+
+  <!-- 2. CÓMO FUNCIONA CSS -->
+  <div class="card css-card" id="como-css">
+    <h2>⚙️ ¿Cómo Funciona CSS?</h2>
+    <p>CSS funciona con <strong>reglas</strong>. Cada regla tiene dos partes: a quién le aplica (selector) y qué cambio hacer (propiedad y valor).</p>
+    <div class="code-wrap"><pre><span class="c-com">/* Estructura de una regla CSS */</span>
+
+<span class="c-sel">selector</span> {
+  <span class="c-prop">propiedad</span>: <span class="c-pval">valor</span>;
+  <span class="c-prop">propiedad</span>: <span class="c-pval">valor</span>;
+}
+
+<span class="c-com">/* Ejemplo real */</span>
+<span class="c-sel">p</span> {
+  <span class="c-prop">color</span>:       <span class="c-pval">blue</span>;        <span class="c-com">/* texto azul */</span>
+  <span class="c-prop">font-size</span>:   <span class="c-pval">18px</span>;       <span class="c-com">/* letra de 18 píxeles */</span>
+  <span class="c-prop">font-family</span>: <span class="c-pval">Arial</span>;      <span class="c-com">/* tipo de letra Arial */</span>
+  <span class="c-prop">background</span>:  <span class="c-pval">yellow</span>;     <span class="c-com">/* fondo amarillo */</span>
+}</pre></div>
+    <p>La palabra "Cascading" (en cascada) significa que si dos reglas intentan cambiar lo mismo, <strong>gana la que está más abajo</strong> en el archivo, como el agua que cae y la última en llegar llena el vaso.</p>
+  </div>
+
+  <!-- 3. CSS CON STYLE -->
+  <div class="card css-card" id="style-tag">
+    <h2>📄 CSS con la etiqueta &lt;style&gt;</h2>
+    <p>Una forma de agregar CSS es escribirlo <strong>dentro del mismo archivo HTML</strong>, usando la etiqueta <code>&lt;style&gt;</code> en el <code>&lt;head&gt;</code>.</p>
+    <div class="code-wrap"><pre><span class="c-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="c-tag">&lt;html&gt;</span>
+<span class="c-tag">&lt;head&gt;</span>
+  <span class="c-tag">&lt;title&gt;</span><span class="c-text">Mi página</span><span class="c-tag">&lt;/title&gt;</span>
+
+  <span class="c-tag">&lt;style&gt;</span>
+    <span class="c-sel">h1</span> {
+      <span class="c-prop">color</span>: <span class="c-pval">red</span>;
+      <span class="c-prop">text-align</span>: <span class="c-pval">center</span>;
+    }
+    <span class="c-sel">p</span> {
+      <span class="c-prop">font-size</span>: <span class="c-pval">16px</span>;
+      <span class="c-prop">color</span>: <span class="c-pval">#333333</span>;
+    }
+  <span class="c-tag">&lt;/style&gt;</span>
+
+<span class="c-tag">&lt;/head&gt;</span>
+<span class="c-tag">&lt;body&gt;</span>
+  <span class="c-tag">&lt;h1&gt;</span><span class="c-text">¡Hola!</span><span class="c-tag">&lt;/h1&gt;</span>
+  <span class="c-tag">&lt;p&gt;</span><span class="c-text">Este texto tiene estilo.</span><span class="c-tag">&lt;/p&gt;</span>
+<span class="c-tag">&lt;/body&gt;</span>
+<span class="c-tag">&lt;/html&gt;</span></pre></div>
+    <div class="why">
+      <strong>¿Cuándo usar &lt;style&gt;?</strong> Es bueno cuando estás aprendiendo o tienes una página pequeña. Para proyectos grandes es mejor usar un archivo separado (lo veremos enseguida).
+    </div>
+  </div>
+
+  <!-- 4. CSS EXTERNO -->
+  <div class="card css-card" id="externo">
+    <h2>🔗 CSS desde un Archivo Externo</h2>
+    <p>La forma más profesional es guardar el CSS en un archivo separado con extensión <strong>.css</strong> y conectarlo al HTML con la etiqueta <code>&lt;link&gt;</code>.</p>
+    <p>Así quedarían tus archivos:</p>
+    <div class="code-wrap"><pre><span class="c-com">📁 Mi Proyecto/
+├── index.html
+└── estilos.css</span></pre></div>
+    <p>Dentro de <strong>index.html</strong>, en el <code>&lt;head&gt;</code>:</p>
+    <div class="code-wrap"><pre><span class="c-tag">&lt;link</span> <span class="c-attr">rel</span>=<span class="c-val">"stylesheet"</span> <span class="c-attr">href</span>=<span class="c-val">"estilos.css"</span><span class="c-tag">&gt;</span></pre></div>
+    <p>Dentro de <strong>estilos.css</strong>:</p>
+    <div class="code-wrap"><pre><span class="c-sel">body</span> {
+  <span class="c-prop">background-color</span>: <span class="c-pval">#f0f0f0</span>;
+  <span class="c-prop">font-family</span>: <span class="c-pval">Arial, sans-serif</span>;
+}
+
+<span class="c-sel">h1</span> {
+  <span class="c-prop">color</span>: <span class="c-pval">#264de4</span>;
+}</pre></div>
+    <div class="why">
+      <strong>¿Por qué es mejor el archivo externo?</strong> Porque si tienes 50 páginas web y quieres cambiar el color del título, solo cambias <strong>un archivo</strong> y se actualiza en todas las páginas. ¡Sin esto tendrías que cambiar los 50 archivos uno por uno!
+    </div>
+  </div>
+
+  <!-- 5. SELECTORES -->
+  <div class="card css-card" id="selectores">
+    <h2>🎯 Selectores: Tipo, ID y Clase</h2>
+    <p>Un <strong>selector</strong> le dice al CSS a cuál elemento HTML quiere cambiar. Hay tres tipos principales:</p>
+
+    <div class="selector-demo">
+      <div class="sel-box type-sel">
+        <h4>1. Selector de Tipo 🏷️</h4>
+        <p>Afecta a <strong>todas</strong> las etiquetas de ese tipo.</p>
+        <div class="code-wrap" style="margin-top:10px; padding: 12px 14px;"><pre style="font-size:.8rem;"><span class="c-sel">p</span> { <span class="c-prop">color</span>: <span class="c-pval">green</span>; }
+<span class="c-sel">h1</span> { <span class="c-prop">color</span>: <span class="c-pval">red</span>; }</pre></div>
+        <p style="margin-top:8px; font-size:.85rem;">👉 Pinta <strong>todos</strong> los párrafos de verde.</p>
+      </div>
+      <div class="sel-box id-sel">
+        <h4>2. Selector de ID 🆔</h4>
+        <p>Afecta a <strong>un solo</strong> elemento único. Se pone con <code>#</code>.</p>
+        <div class="code-wrap" style="margin-top:10px; padding: 12px 14px;"><pre style="font-size:.8rem;"><span class="c-com">/* En el HTML */</span>
+<span class="c-tag">&lt;h1</span> <span class="c-attr">id</span>=<span class="c-val">"titulo-rojo"</span><span class="c-tag">&gt;</span><span class="c-text">Hola</span><span class="c-tag">&lt;/h1&gt;</span>
+
+<span class="c-com">/* En el CSS */</span>
+<span class="c-sel">#titulo-rojo</span> { <span class="c-prop">color</span>: <span class="c-pval">red</span>; }</pre></div>
+        <p style="margin-top:8px; font-size:.85rem;">👉 Solo afecta a <strong>ese</strong> h1 específico.</p>
+      </div>
+    </div>
+
+    <div class="sel-box class-sel" style="margin-top:16px;">
+      <h4>3. Selector de Clase 🏫</h4>
+      <p>Afecta a <strong>varios elementos</strong> que compartan la misma clase. Se pone con <code>.</code> (punto).</p>
+      <div class="code-wrap" style="margin-top:10px; padding: 14px 16px;"><pre style="font-size:.83rem;"><span class="c-com">/* En el HTML puedes usarlo en varios elementos */</span>
+<span class="c-tag">&lt;p</span> <span class="c-attr">class</span>=<span class="c-val">"importante"</span><span class="c-tag">&gt;</span><span class="c-text">Este es importante</span><span class="c-tag">&lt;/p&gt;</span>
+<span class="c-tag">&lt;h2</span> <span class="c-attr">class</span>=<span class="c-val">"importante"</span><span class="c-tag">&gt;</span><span class="c-text">Este también</span><span class="c-tag">&lt;/h2&gt;</span>
+<span class="c-tag">&lt;span</span> <span class="c-attr">class</span>=<span class="c-val">"importante"</span><span class="c-tag">&gt;</span><span class="c-text">Y este</span><span class="c-tag">&lt;/span&gt;</span>
+
+<span class="c-com">/* En el CSS (con punto al inicio) */</span>
+<span class="c-sel">.importante</span> {
+  <span class="c-prop">color</span>: <span class="c-pval">purple</span>;
+  <span class="c-prop">font-weight</span>: <span class="c-pval">bold</span>;
+}</pre></div>
+      <p style="margin-top:8px; font-size:.85rem;">👉 Los tres elementos se volverán morados y negritas. ¡Muy útil para reutilizar estilos!</p>
+    </div>
+
+    <table class="nice-table" style="margin-top:16px;">
+      <tr><th>Tipo</th><th>Sintaxis HTML</th><th>Sintaxis CSS</th><th>¿Cuántos afecta?</th></tr>
+      <tr><td>Tipo</td><td><code>&lt;p&gt;</code></td><td><code>p { }</code></td><td>Todos los &lt;p&gt;</td></tr>
+      <tr><td>ID</td><td><code>id="nombre"</code></td><td><code>#nombre { }</code></td><td>Solo 1 (único)</td></tr>
+      <tr><td>Clase</td><td><code>class="nombre"</code></td><td><code>.nombre { }</code></td><td>Todos con esa clase</td></tr>
+    </table>
+
+    <div class="why">
+      <strong>¿Cuándo uso cada uno?</strong> Usa <strong>tipo</strong> para reglas generales (todos los párrafos iguales), <strong>ID</strong> para un elemento único (solo ese logo, solo ese botón principal) y <strong>clase</strong> para grupos de elementos que deben verse igual (todos los botones rojos, todas las tarjetas con sombra).
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  <p>🎉 ¡Felicidades por llegar hasta aquí! Ahora ya sabes los fundamentos de <strong>HTML y CSS</strong>.</p>
+  <p style="margin-top:8px;">El siguiente paso es practicar: abre VS Code, crea un archivo <code>index.html</code> y empieza a construir tu primera página web. ¡Tú puedes! 🚀</p>
+</footer>
+
+</body>
+</html>
